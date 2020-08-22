@@ -1,39 +1,56 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { Button } from "carbon-components-react";
-//import Login from "./screen/Login";
+import { ModalWrapper } from "carbon-components-react";
+import Login from "./screen/Login";
 import Signup from "./screen/Signup";
 
 const Homepage = ({ isAuthenticated }) => {
     if (isAuthenticated) {
-        return <Redirect to="/" />;
+        return <Redirect to="/logout" />;
     }
 
+    const bannerStyle = {
+        position: "absolute",
+        top: "30%",
+        textAlign: "center",
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+    };
+
     return (
-        <div>
+        <div style={{ position: "relative" }}>
             <img
                 src="https://cdn2.f-cdn.com/contestentries/1490804/32875450/5cbfe247369ee_thumb900.jpg"
                 alt="favourtie"
                 width="100%"
+                height="600px"
             />
-            <div>
-                {/* <div>
-          <Button
-            kind="primary"
-            style={{ marginBottom: 30 }}
-          >
-            Login
-          </Button>
-              <Login />
-        </div> */}
-
-                <div>
-                    <Link to="/signup">
-                        <Button variant="contained">SignUp</Button>
-                        <Signup />
-                    </Link>
+            <div style={bannerStyle}>
+                <div
+                    style={{ display: "flex", justifyContent: "space-evenly" }}
+                >
+                    <div style={{marginRight : 20}}>
+                        <ModalWrapper
+                            passiveModal
+                            size="md"
+                            buttonTriggerText="Login"
+                            modalHeading="Login"
+                        >
+                            <Login />
+                        </ModalWrapper>
+                    </div>
+                    <div>
+                        <ModalWrapper
+                            passiveModal
+                            size="md"
+                            buttonTriggerText="Sign Up"
+                            modalHeading="Sign Up"
+                        >
+                            <Signup />
+                        </ModalWrapper>
+                    </div>
                 </div>
             </div>
         </div>

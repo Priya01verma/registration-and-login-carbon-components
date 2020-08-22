@@ -29,8 +29,7 @@ export const signup = user => async dispatch => {
 };
 
 export const login = user => async dispatch => {
-  console.log(user);
-
+  
   const loginVerification = () => {
     let err = "Wrong Username";
     let loginFlag = false;

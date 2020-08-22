@@ -3,24 +3,17 @@ import { signup } from "../../models/Auth/action";
 import { connect } from "react-redux";
 
 const {
-    Form,
-    FormGroup,
     TextInput,
-    TextArea,
-    Select,
-    SelectItem,
     Button,
 } = require("carbon-components-react");
 
 
-const Signup = ({ signup, isAuthenticated, inline }) => {
+const Signup = ({ signup }) => {
     const [user, setUser] = useState({
         email: "",
         username: "",
         password: "",
     });
-
-    const [showPassword, setShowPassword] = useState(false);
 
     const handleChange = (event) => {
         setUser({ ...user, [event.target.name]: event.target.value });
@@ -32,12 +25,12 @@ const Signup = ({ signup, isAuthenticated, inline }) => {
         }
         else {
             signup(user);
-            setUser({ ...user, email: "", username: "", password: "" });   
+            setUser({ ...user, email: "", username: "", password: "" });
         }
     };
       
     return (
-        <div>
+        <div style={{padding: 64}}>
             <h2>Registration Form</h2>
               <TextInput
                 id="username"
@@ -68,7 +61,7 @@ const Signup = ({ signup, isAuthenticated, inline }) => {
                 name="password"
                 margin="normal"
                 placeholder="password"
-                type={showPassword ? "text" : "password"}
+                type="password"
                 onChange={(event) => handleChange(event)}
             />
             <Button

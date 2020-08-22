@@ -3,18 +3,12 @@ import { login } from "../../models/Auth/action";
 import { connect } from "react-redux";
 
 const {
-    Form,
-    FormGroup,
     TextInput,
-    TextArea,
-    Select,
-    SelectItem,
     Button,
 } = require("carbon-components-react");
 
 const Login = ({ login }) => {
     const [user, setUser] = useState({
-        email: "",
         username: "",
         password: "",
     });
@@ -25,11 +19,11 @@ const Login = ({ login }) => {
 
     const onLogin = (user) => {
         login(user);
-        setUser({ ...user, email: "", username: "", password: "" });
+        setUser({ ...user, username: "", password: "" });
     };
 
     return (
-        <div>
+        <div style={{padding: 64}}>
             <h1>Login</h1>
             <TextInput
                 id="username"
@@ -49,7 +43,7 @@ const Login = ({ login }) => {
                 name="password"
                 margin="normal"
                 placeholder="password"
-                type={showPassword ? "text" : "password"}
+                type="password"
                 onChange={(event) => handleChange(event)}
             />
             <Button
@@ -58,6 +52,7 @@ const Login = ({ login }) => {
                 disabled={
                     user.username === "" || user.password === "" ? true : false
                 }
+                style={{marginTop: 12}}
                 onClick={() => onLogin(user)}
             >
                 Login

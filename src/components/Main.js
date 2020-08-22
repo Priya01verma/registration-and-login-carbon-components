@@ -1,6 +1,5 @@
 import React from 'react';
 import Navigatepage from './NavigatePage';
-import Homepage from './Homepage';
 
 const Main = () => {
     return (
